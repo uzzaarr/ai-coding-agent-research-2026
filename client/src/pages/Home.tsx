@@ -1,4 +1,4 @@
-import { Streamdown } from 'streamdown';
+import { marked } from 'marked';
 import { useEffect, useState } from 'react';
 import HeroSection from "../components/HeroSection";
 
@@ -61,9 +61,10 @@ The patterns are still evolving quickly through 2026.`);
         {/* Research Report Container - frosted glass as per design spec */}
         <div className="container mx-auto px-4 py-12 max-w-5xl">
           <div className="bg-card/95 backdrop-blur-md text-card-foreground p-8 md:p-14 rounded-2xl shadow-xl border border-border/60">
-            <article className="prose prose-slate dark:prose-invert max-w-none prose-headings:text-foreground prose-p:text-foreground/90 prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-secondary prose-pre:text-secondary-foreground prose-pre:border prose-pre:border-border prose-blockquote:border-l-primary">
-              <Streamdown>{reportContent}</Streamdown>
-            </article>
+            <article 
+              className="prose prose-slate dark:prose-invert max-w-none prose-headings:text-foreground prose-p:text-foreground/90 prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-secondary prose-pre:text-secondary-foreground prose-pre:border prose-pre:border-border prose-blockquote:border-l-primary"
+              dangerouslySetInnerHTML={{ __html: marked.parse(reportContent) }}
+            />
           </div>
         </div>
 
